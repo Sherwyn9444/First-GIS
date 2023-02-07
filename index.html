@@ -8,14 +8,19 @@
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>   <!--Map-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">    <!--Map-->
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> <!--Ajax-->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>  <!--Analytics-->
     <script>
         $(document).ready(function(){
             $("#profile").click(function(){
                 $("#main").load("profile.php");
             });
+
             $("#map").click(function(){
                 $("#main").load("map.php");
+            });
+
+            $("#analytics").click(function(){
+                $("#main").load("analytics.php");
             });
         });
     </script>
