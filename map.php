@@ -4,8 +4,11 @@
     </head>
     <body>
         <div id="map-holder" style="width:400px;height:400px;"></div>
+        <div id="map-controller">
+            <input type="text" id="map-txt-search" placeholder="Search">
+            <input type="button" id="map-btn-search" value="Search">
+        </div>
         <script>
-            
             var map = new ol.Map({
                 layers:[
                     new ol.layer.Tile({
