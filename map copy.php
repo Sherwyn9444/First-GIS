@@ -39,6 +39,9 @@
             }
             
         </style>
+        <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>   <!--Map-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">    <!--Map-->
+    <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script> <!--Map-->
     </head>
     <body>
         <div id="map-holder" style="width:800px;height:600px;"></div>
@@ -73,6 +76,17 @@
         </div>
             
         <script>
+            var Salvacion = [
+                [16.486710064705164, 121.15179441522147],
+                [16.485490992433665, 121.15132946850012],
+                [16.48172226900472, 121.14814748929045],
+                [16.48011305049419, 121.1460697585049],
+                [16.476307419530375, 121.1469755275274],
+                [16.476843837712334, 121.14922761320898],
+                [16.47800026667709, 121.15106560586156],
+                [16.480229507834608, 121.15315786619628],
+                [16.482214904173446, 121.1556569550765]
+            ]
             var container = document.getElementById('popup');
             var content = document.getElementById('popup-content');
             var closer = document.getElementById('popup-closer');
@@ -117,6 +131,16 @@
                         map.removeLayer(all_layers[l]);
                     }
                 }
+                for(var x =0; x< Salvacion.length ; x++){
+                    var temp = Salvacion[x][0];
+                    Salvacion[x][0] = Salvacion[x][1];
+                    Salvacion[x][1] = temp;
+
+                }
+                Salvacion.map(function(e){
+                   collect_point.push(ol.proj.fromLonLat(e));    
+                });
+                
                 var temp_layer = createPoly(collect_point);
                 map.addLayer(temp_layer);
 

@@ -87,6 +87,7 @@
             var point_txt_date = document.getElementById("point-txt-date");
             var point_txt_coor = document.getElementById("point-txt-coor");
             var open_point = false;
+            var tooltip = false;
             var collect_point = [];
             //var center_point = [121.15166,16.48612];
             var center_point = [13486396.215547621,1860735.883408689];
@@ -121,7 +122,50 @@
                 }
                
             });
+            map.on("pointermove",function(event){
+                var ctr = 0;
+                var pixel = map.getPixelFromCoordinate(event.coordinate);
+                var feature = map.forEachFeatureAtPixel(pixel, function (feature, layer) {
+                    if(layer){
+                        if(!tooltip){
+                            tooltip = true;
+                            showTooltip(pixel,layer);
+                        }
+                    }
+                    ctr++;
+                });
+                if(ctr == 0){
+                    closeTooltip();
+                    tooltip = false;
+                }
+            });
 
+        function showTooltip(coor,geo){
+            var temp = document.createElement("div");
+            temp.innerHTML = geo.name;
+            temp.setAttribute("class","tooltip");
+            temp.style.padding = "5px";
+            temp.style.backgroundColor = "white";
+            temp.style.fontSize = "20px";
+            temp.style.position = "absolute";
+            temp.style.left = coor[0] + 210 + "px";
+            temp.style.top = coor[1] + 20 + "px";
+            temp.style.opacity = 0;
+            temp.style.transition = "0.5s"
+            setTimeout(function(){
+                temp.style.opacity = 1;
+            });
+            document.getElementById("main").appendChild(temp);
+        }
+        function closeTooltip(){
+            var tooltips = Array.from(document.getElementsByClassName("tooltip"));
+            tooltips.map(function(e){
+                e.style.opacity = 0;
+                setTimeout(function(){
+                    document.getElementById("main").removeChild(e);
+                },500);
+            });
+        }
         function mapSelect(local){
             setTimeout(function(){
                 var pix = map.getPixelFromCoordinate(pointToArray(local));
