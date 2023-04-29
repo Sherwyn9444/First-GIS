@@ -2,48 +2,56 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Sample Dashboard</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>    <!--CSS-->
-    <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>   <!--Map-->
+	<title>BizLookUp</title>
+    <link href="index.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">    <!--Map-->
-    <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script> <!--Map-->
+    <link href="API/mui-0.10.3/css/mui.min.css" rel="stylesheet"> <!--UI-->
+    <link href="modal.css" rel="stylesheet">  <!--Modal-->
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> <!--Ajax-->
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>    <!--CSS-->
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>   <!--Map-->
+    <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script> <!--Map-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>  <!--Analytics-->
+    <script src="API/mui-0.10.3/js/mui.min.js"></script> <!--UI-->
+    
     <script>
         $(document).ready(function(){
-            $("#profile").click(function(){
-                $("#main").load("profile.php");
+            $("#business").click(function(){
+                $("#main").load("business.php");
             });
-
+            $("#location").click(function(){
+                $("#main").load("location.php");
+            });
             $("#map").click(function(){
                 $("#main").load("map.php");
             });
-
-            $("#analytics").click(function(){
-                $("#main").load("analytics.php");
-            });
         });
+
     </script>
 </head>
 
 <body>
-<div class="wrapper">
-    <div class="sidebar">
-        <h2>LOGO</h2>
-        <ul>
-            <li><a href="#" id="home" class="menu"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="#" id="profile" class="menu"><i class="fas fa-user"></i>Profile</a></li>
-            <li><a href="#" id="map" class="menu"><i class="fas fa-map-pin"></i>Map</a></li>
-            <li><a href="#" id="analytics" class="menu"><i class="fas fa-chart-bar"></i>Analytics</a></li>
-            <li><a href="#" id="contact" class="menu"><i class="fas fa-address-book"></i>Contact</a></li>
-            <li><a href="#" id="about" class="menu"><i class="fas fa-address-card"></i>About</a></li>
-        </ul> 
-    </div>
-    <div class="top-header">
-        <div class="header">Header</div>  
-        <div class="body">
-           <div id = "main">Body</div>
+    <div class='navbar'>
+        <div class='navbar-content'>
+          <br />
+          
+          <h2>Navbar</h2>
+          <div>
+            <ul class='navbar-list'>
+              <li class='navbar-row' id="home"><div class='icon-title'>Home</div></li>
+              <li class='navbar-row' id="business"><div class='icon-title'>Business Management</div></li>
+              <li class='navbar-row' id="location"><div class='icon-title'>Location Management</div></li>
+              <li class='navbar-row' id="map"><div class='icon-title'>Open Map</div></li>
+              <li class='navbar-row' id="home"><div class='icon-title'>Login</div></li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class = "sub-container">
+          <div id = "main">Body</div>
         </div>
     </div>
 </div>

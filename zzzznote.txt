@@ -1,0 +1,11 @@
+//Basics
+https://api.maptiler.com/maps/basic-v2/style.json?key=MoZHscHCAKGMsGR736H3
+https://api.maptiler.com/maps/basic-v2/?key=MoZHscHCAKGMsGR736H3#14.7/16.48080/121.15183
+https://api.maptiler.com/maps/basic-v2/tiles.json?key=MoZHscHCAKGMsGR736H3  ---- legit
+
+//Streets
+https://api.maptiler.com/maps/openstreetmap/tiles.json?key=iXy9WEaPCZfoCJLTKnjL
+
+
+//Links
+https://cloud.maptiler.com/maps/basic-v2/
