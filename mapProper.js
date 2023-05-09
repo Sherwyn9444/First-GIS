@@ -46,7 +46,7 @@ function showTooltip(coor,geo,event){
     if(geo.type != "Region"){
         str += "Location ID: "+geo.id+"<br>Location Name: "+geo.name+"<br><br>Businesses:<br>";
         for(var x = 0; x < geo.businesses.length;x++){
-            str += "<div class='tooltip-business'>"+geo.businesses[x].name+"</div><br>";
+            str += "<div class='tooltip-business' onclick=\'displayBusiness("+JSON.stringify(geo.businesses[x])+")\'>"+geo.businesses[x].name+"</div>";
         }
         str += "<br>Location:<br>";
         for(var x = 0; x < geo.location.length;x++){
@@ -58,23 +58,20 @@ function showTooltip(coor,geo,event){
     }
     temp.innerHTML = str;
     temp.setAttribute("class","tooltip");
-    temp.style.left = coor[0] + 240 + "px";
+    temp.style.left = coor[0] + 220 + "px";
     temp.style.top = coor[1] - 50 + "px";
     temp.style.transition = "0.5s"
     temp.style.display = "block";
     
-    var busi = document.getElementsByClassName("tooltip-business");
-    for(var x = 0; x<busi.length ; x++){
-        busi[x].addEventListener("click",function(){
-            
-            str = "";
-            for(var x = 0; x < geo.businesses.length;x++){
-                str += "Number: "+geo.businesses[x].number+"<br>Name: "+geo.businesses[x].name+"<br>Owner: "+geo.businesses[x].owner+"<br>Type: "+geo.businesses[x].type+"<br>Date: "+geo.businesses[x].date+"<br>Active: "+geo.businesses[x].active+"<br>";
-            }
-            str += "";
-            temp.innerHTML = str;
-        });
-    }
+}
+
+function displayBusiness(business){
+    var temp = document.getElementById("def-holder");
+    str = "";
+    str += "Number: "+business.number+"<br>Name: "+business.name+"<br>Owner: "+business.owner+"<br>Type: "+business.type+"<br>Date: "+business.date+"<br>Active: "+business.active+"<br>";
+    
+    str += "";
+    temp.innerHTML = str;
 }
 
 function closeTooltip(){
@@ -111,25 +108,6 @@ function createPoint(coordinate,id="as",name="as",businesses=[],location=[]){
         layer.coor =  ol.proj.transform(coord, 'EPSG:3857', 'EPSG:4326');
         map_regions.push(layer);
         return layer;
-    }
-
-    function reverse(barangay){
-        for(var x =0; x< barangay.length ; x++){
-            var temp = barangay[x][0];
-            barangay[x][0] = barangay[x][1];
-            barangay[x][1] = temp;
-        }
-        return barangay;
-    }
-    function convert(barangay){
-        var barangay_area = [];
-        barangay = reverse(barangay);
-        barangay.map(function(e){
-            barangay_area.push(ol.proj.fromLonLat(e));    
-        });
-            
-        
-        return barangay_area;
     }
 
     function isInside(coordinate, vs) {

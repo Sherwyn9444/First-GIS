@@ -96,8 +96,27 @@
                 });
             }
     }
+
+    span.onclick = function(){
+        document.getElementById("business-id").value = "";
+        document.getElementById("business-number").value = "";
+        document.getElementById("business-name").value = "";
+        document.getElementById("business-type").value = "";
+        document.getElementById("business-owner").value = ""
+        document.getElementById("business-date").value = "";
+        document.getElementById("all-location").value = "";
+        modal.style.display = "none";
+    }
+
     document.getElementById("cancel").addEventListener("click",function(e){
         e.preventDefault();
+        document.getElementById("business-id").value = "";
+        document.getElementById("business-number").value = "";
+        document.getElementById("business-name").value = "";
+        document.getElementById("business-type").value = "";
+        document.getElementById("business-owner").value = ""
+        document.getElementById("business-date").value = "";
+        document.getElementById("all-location").value = "";
         modal.style.display = "none";
     });
 

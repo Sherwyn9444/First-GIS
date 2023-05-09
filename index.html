@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">    <!--Map-->
     <link href="API/mui-0.10.3/css/mui.min.css" rel="stylesheet"> <!--UI-->
     <link href="modal.css" rel="stylesheet">  <!--Modal-->
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> <!--Ajax-->
+    <!--<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>--><!--Ajax-->
+    <script src="API/jquery-3.6.4.min.js"></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>    <!--CSS-->
     <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>   <!--Map-->
     <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script> <!--Map-->
@@ -25,6 +26,9 @@
             $("#map").click(function(){
                 $("#main").load("map.php");
             });
+            $("#areas").click(function(){
+                $("#main").load("areas.php");
+            });
         });
 
     </script>
@@ -38,10 +42,12 @@
           <h2>Navbar</h2>
           <div>
             <ul class='navbar-list'>
-              <li class='navbar-row' id="home"><div class='icon-title'>Home</div></li>
+              <li class='navbar-row' id="home"><div class='icon-title'>Dashboard</div></li>
               <li class='navbar-row' id="business"><div class='icon-title'>Business Management</div></li>
               <li class='navbar-row' id="location"><div class='icon-title'>Location Management</div></li>
-              <li class='navbar-row' id="map"><div class='icon-title'>Open Map</div></li>
+              <li class='navbar-row' id="map"><div class='icon-title'>Map</div></li>
+              <li class='navbar-row' id="areas"><div class='icon-title'>Areas</div></li>
+              <li class='navbar-row' id="analytics"><div class='icon-title'>Analytics</div></li>
               <li class='navbar-row' id="home"><div class='icon-title'>Login</div></li>
             </ul>
             

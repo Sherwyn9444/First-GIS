@@ -26,6 +26,23 @@
             return $allOutput;
         }
 
+        function selectArea(){
+           
+            $sql = "SELECT `id`, `name`, `type` , ST_AsText(area) as location FROM areas";
+
+            $allOutput = [];
+            $result = $this->conn->query($sql);
+            if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {  
+                    if(isset($row)){
+                        $output = new Area($row["id"],$row["name"],$row["type"],$row["location"]);
+                        array_push($allOutput,$output);
+                    }
+                }
+            }
+            return $allOutput;
+        }
+
         function selectBusiness($where){
             $sql = "SELECT * FROM profile";
             if($where == ""){
@@ -51,6 +68,11 @@
 
         function insertLocation($locationNumber, $locationName,$businessLocation){
             $sql = "INSERT INTO `location`(`locationNo`,`locationName`, `locationPoint`) VALUES ('".$locationNumber."', '".$locationName."',ST_GeomFromText($businessLocation))";
+            $this->conn->query($sql);
+        }
+
+        function insertArea($areaName, $areaType,$areaLocation){
+            $sql = "INSERT INTO `areas`(`name`,`type`, `area`) VALUES ('".$areaName."', '".$areaType."',ST_GeomFromText('".$areaLocation."'))";
             $this->conn->query($sql);
         }
 

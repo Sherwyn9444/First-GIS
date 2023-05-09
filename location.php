@@ -80,8 +80,19 @@
         document.getElementById("map-data").value = "'Point("+geometry[0]+" "+geometry[1]+")'";;
         
     }
+
+    span.onclick = function(){
+        document.getElementById("map-data").value = "";
+        document.getElementById("map-number").value = "";
+        document.getElementById("map-name").value = "";
+        modal.style.display = "none";
+    }
+
     document.getElementById("cancel").addEventListener("click",function(e){
         e.preventDefault();
+        document.getElementById("map-data").value = "";
+        document.getElementById("map-number").value = "";
+        document.getElementById("map-name").value = "";
         modal.style.display = "none";
     });
     document.getElementById("saveLocation").addEventListener("click",function(e){

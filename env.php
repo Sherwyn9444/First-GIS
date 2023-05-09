@@ -3,6 +3,8 @@
     include "Model/datamodel.php";
     include "Model/dbmodel.php";
     include "Model/locationmodel.php";
+    include "Model/areamodel.php";
+    
 
     $database = new Database();
     $database->setServer("localhost");
